@@ -1,4 +1,4 @@
-package t3fClient;
+package  t3fClient;
 
 import static org.junit.Assert.*;
 
@@ -28,6 +28,14 @@ clerckService=(ClerckService) new InitialContext().lookup("t3fJPA/ClerckServiceI
 		clerck.setName("hhh");
 		clerck.setPassword("111");
 		clerckService.add(clerck);
+		
+		
+	}
+	@Test 
+	public void findClerckTest(){
+		
+		Clerck clerck=clerckService.findByLP("", "");
+		assertNotNull(clerck);
 		
 		
 	}

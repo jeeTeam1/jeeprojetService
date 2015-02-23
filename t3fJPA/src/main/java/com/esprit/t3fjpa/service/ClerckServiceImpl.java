@@ -54,7 +54,10 @@ Query query=entitymanager.createQuery("SELECT p FROM Player p");
 	@Override
 	public Clerck findByLP(String login, String password) {
 	Clerck clerck;
-	Query query=entitymanager.createQuery("");
+	Query query=entitymanager.createQuery("SELECT c from Clerck c wehere c.login=login1 and c.password=password1");
+	query.setParameter("login1",login );
+	query.setParameter("password1",password );
+	clerck=(Clerck) query.getResultList();
 	return clerck;
 	}
 	
