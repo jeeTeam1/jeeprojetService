@@ -14,6 +14,6 @@ public interface ClerckService {
 	void update(Clerck clerck);
 	List<Clerck>findAll();
 	Clerck findById(int id);
-	Clerck findByLP(String login ,String password);
+	Integer findByLP(String login ,String password);
 
 }

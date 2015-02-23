@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.servlet.jsp.jstl.sql.Result;
 
 import com.esprit.t3fjpa.domain.Clerck;
 import com.esprit.t3fjpa.service.impl.ClerckService;
@@ -52,13 +53,13 @@ Query query=entitymanager.createQuery("SELECT p FROM Player p");
 	}
 
 	@Override
-	public Clerck findByLP(String login, String password) {
-	Clerck clerck;
-	Query query=entitymanager.createQuery("SELECT c from Clerck c wehere c.login=login1 and c.password=password1");
-	query.setParameter("login1",login );
-	query.setParameter("password1",password );
-	clerck=(Clerck) query.getResultList();
-	return clerck;
+	public Integer findByLP(String login, String password) {
+	int nbr;
+	Query query=entitymanager.createQuery("SELECT c from Clerck c where c.login=:login and c.password=:password");
+	query.setParameter("login",login );
+	query.setParameter("password",password );
+	nbr= query.getResultList().size();
+	return nbr;
 	}
 	
 
