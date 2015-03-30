@@ -33,9 +33,28 @@ clerckService=(ClerckService) new InitialContext().lookup("t3fJPA/ClerckServiceI
 	}
 	@Test 
 	public void findClerckTest(){
+		int id ;
 		
-		Clerck clerck=clerckService.findByLP("", "");
-		assertNotNull(clerck);
+		 id = clerckService.findByLP("ameni", "111");
+		assertEquals(1, id);
+		
+		
+	}
+	@Test 
+	public void findByLoginTest(){
+		int id ;
+		
+		 id = clerckService.findByLogin("amni");
+		assertEquals(0, id);
+		
+		
+	}
+	@Test 
+	public void findContestByClerckTest(){
+		
+		
+		
+		assertEquals(1, clerckService.findContestByClerck(1).size());
 		
 		
 	}

@@ -5,9 +5,9 @@ import static org.junit.Assert.*;
 import java.util.List;
 
 import javax.naming.InitialContext;
-import javax.naming.NamingException;
 
-import org.junit.Before;
+
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -34,8 +34,10 @@ public class PlayerServiceTest {
 	Player player=new Player();
 	
 	player.setAge(1);
-	player.setLastName("ameni");
+	player.setLastName("amenii");
 	player.setLicenseNumber(23);
+	player.setLogin("ameni");
+	player.setPassword("111");
 	playerService.add(player);
 	
 
@@ -61,7 +63,7 @@ public class PlayerServiceTest {
 	@Test
 	public void findAllTest()
 	{List<Player>players=playerService.findAll();
-	assertNotNull(players);
+	assertEquals(1,players.size() );
 		
 		
 	}
@@ -69,6 +71,18 @@ public class PlayerServiceTest {
 	public void deleteTest(){
 	Player player =playerService.findById(1);;
 		playerService.delete(player);
+		
+	}
+	@Test
+	public void findAssociation(){
+		String name=playerService.findAssociationByPlayer(1);
+		assertEquals("ameni", name);
+		
+		
+	}
+	@Test
+	public void findAchievementByPlayer(){
+		assertEquals(1, playerService.findAchivementByPlayer(1).size());
 		
 	}
 	}
